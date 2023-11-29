@@ -1,0 +1,12 @@
+.weather-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 300px;
+    font-size: 1.6rem;
+    padding: 3rem;
+    color: whitesmoke;
+    background-color: rgb(106, 156, 255);
+    border-radius: 1rem;
+    border: 1px solid black;
+}
