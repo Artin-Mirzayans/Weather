@@ -1,0 +1,31 @@
+Add New City
+<div id="weather-dialog">
+@if (isLoading) {
+  <mat-spinner></mat-spinner>
+}
+@else {
+    <mat-form-field  appearance="outline">
+      <mat-label>City</mat-label>
+      <input #input type="text"
+      placeholder="Choose City"
+      matInput
+      [formControl]="form"
+      [matAutocomplete]="auto"
+      (input)="filter()"
+      (focus)="filter()">
+        <button matSuffix mat-icon-button aria-label="Clear" (click)="clearInput()">
+          <mat-icon>close</mat-icon>
+        </button>
+          <mat-autocomplete #auto="matAutocomplete">
+          @for (city of filteredCities; track city) {
+            <mat-option [value]="city">{{city}}</mat-option>
+          }
+        </mat-autocomplete>
+        @if (form.hasError('emptyInput')){<mat-error>City cannot be empty.</mat-error>}
+        @if (form.hasError('invalidCity')){<mat-error>Invalid city selected.</mat-error>}
+        @if (form.hasError('duplicateCity')){<mat-error>City has already been selected.</mat-error>}   
+        @if (form.hasError('fetchError')){<mat-error>Error fetching weather.</mat-error>}
+    </mat-form-field>
+    <button mat-raised-button color="primary" (click)="submitForm()">Submit</button>
+}
+</div>

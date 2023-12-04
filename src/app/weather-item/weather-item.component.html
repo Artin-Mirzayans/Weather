@@ -1,5 +1,24 @@
 <div class="weather-card">
-    <div>{{ weather?.Location?.S }}</div>
-    <div>{{ weather?.Description?.S }}</div>
-    <div>{{ weather?.Temperature?.N }}</div>
+  @if (isUpdating) {
+    <mat-spinner></mat-spinner>
+  }
+
+  @else {
+    <div>{{ weather.Location.S.split(',')[0] }}</div>
+    <div>{{ weather.Description.S }}</div>
+    <div>{{ weather.Temperature.N }}</div>
+    <div>{{ getFormattedTime(weather.Timestamp.S) }}</div>
+    @if (getFormattedTime(weather.Timestamp.S) !== 'Just Updated') {
+    <div class="weather-button button_update">
+    <button mat-fab color="primary" (click)="handleUpdate()">
+      <mat-icon>update</mat-icon>
+    </button>
+    </div>
+  }
+    <div class="weather-button button_delete">
+    <button mat-fab color="warn" (click)="handleDelete()">
+      <mat-icon>delete</mat-icon>
+    </button>
+    </div>
+  }
   </div>

@@ -1,12 +1,26 @@
 .weather-card {
     display: flex;
+    position: relative;
     flex-direction: column;
     align-items: center;
-    width: 300px;
     font-size: 1.6rem;
-    padding: 3rem;
+    padding: 5rem;
+    margin: 2rem;
     color: whitesmoke;
     background-color: rgb(106, 156, 255);
     border-radius: 1rem;
     border: 1px solid black;
 }
+
+.weather-button {
+    position: absolute;
+    top: 10px; /* Adjust the top distance as needed */
+  }
+  
+  .button_update {
+    right: 70px; /* Adjust the right distance as needed */
+  }
+  
+  .button_delete {
+    right: 10px; /* Adjust the right distance as needed */
+  }

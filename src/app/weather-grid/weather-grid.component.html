@@ -1,5 +1,7 @@
 <div id="Weather-Grid">
-<div *ngFor="let weather of allWeatherData">
-  <app-weather-item [weather]="weather"></app-weather-item>
+<div *ngFor="let city of cityService.cities">
+  <app-weather-item [weather]="city"></app-weather-item>
 </div>
+<button mat-button (click)="openDialog()"><mat-icon id="Add_Icon">add_circle</mat-icon></button>
+
 </div>
