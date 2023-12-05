@@ -4,11 +4,15 @@
   }
 
   @else {
-    <div>{{ weather.Location.S.split(',')[0] }}</div>
-    <div>{{ weather.Description.S }}</div>
-    <div>{{ weather.Temperature.N }}</div>
-    <div>{{ getFormattedTime(weather.Timestamp.S) }}</div>
+    <div class="weather-info">
+    <div class="location">{{ weather.Location.S.split(',')[0] }}</div>
+    <div class="description">{{ weather.Description.S }}</div>
+    <div class="temperature">{{ weather.Temperature.N }}°</div>
+    <div class="high-low">{{weather.TempMin.N}}°/{{weather.TempMax.N}}°</div>
+  </div>
     @if (getFormattedTime(weather.Timestamp.S) !== 'Just Updated') {
+
+    <div class="last-updated">{{ getFormattedTime(weather.Timestamp.S) }}</div>
     <div class="weather-button button_update">
     <button mat-fab color="primary" (click)="handleUpdate()">
       <mat-icon>update</mat-icon>

@@ -23,6 +23,9 @@ export class CityService {
 
     if (indexToUpdate !== -1) {
       this.cities[indexToUpdate] = { ...this.cities[indexToUpdate], ...updatedCity };
+      const updatedCityCopy = this.cities[indexToUpdate];
+      this.cities.splice(indexToUpdate, 1);
+      this.cities.unshift(updatedCityCopy);
     }
 
   }

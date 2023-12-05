@@ -1,15 +1,52 @@
 .weather-card {
-    display: flex;
     position: relative;
-    flex-direction: column;
-    align-items: center;
-    font-size: 1.6rem;
-    padding: 5rem;
+    width: 300px;
+    font-size: 2.2rem;
+    padding: 4.5rem;
     margin: 2rem;
     color: whitesmoke;
-    background-color: rgb(106, 156, 255);
+    background-color: rgb(120, 165, 255);
     border-radius: 1rem;
-    border: 1px solid black;
+    border: 2px solid black;
+    transition: 0.15s;
+}
+
+.weather-card:hover {
+  color: rgb(120, 165, 255);
+  background-color: whitesmoke;
+  transform: scale(1.05);
+  cursor: pointer;
+  
+}
+
+.weather-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.weather-info {
+  .location {
+    font-weight: 580;
+    font-size: 2.5rem;
+  }
+  .description {
+    font-size: 2.1rem;
+  }
+  .temperature {
+    font-size: 2rem;
+  }
+  .high-low {
+    font-size: 1.8rem;
+  }
+}
+
+.last-updated {
+  position: absolute;
+  font-size: 1.5rem;
+  top: 15px;
+  left: 15px;
 }
 
 .weather-button {
