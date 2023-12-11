@@ -4,7 +4,7 @@
   }
 
   @else {
-    <div class="weather-info">
+    <div class="weather-info" (click)="openWeatherInfo()">
     <div class="location">{{ weather.Location.S.split(',')[0] }}</div>
     <div class="description">{{ weather.Description.S }}</div>
     <div class="temperature">{{ weather.Temperature.N }}°</div>

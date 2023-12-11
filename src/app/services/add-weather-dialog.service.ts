@@ -1,11 +1,11 @@
 import { Injectable } from '@angular/core';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
-import { AddWeatherDialogComponent } from './add-weather-dialog/add-weather-dialog.component';
+import { AddWeatherDialogComponent } from '../add-weather-dialog/add-weather-dialog.component';
 
 @Injectable({
   providedIn: 'root',
 })
-export class WeatherDialogService {
+export class AddWeatherDialogService {
   private dialogRef: MatDialogRef<AddWeatherDialogComponent> | null = null;
 
   constructor(private dialog: MatDialog) { }

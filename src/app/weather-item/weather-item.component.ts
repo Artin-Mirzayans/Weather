@@ -4,9 +4,10 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { Weather } from '../models/weather.model';
-import { LastUpdatedService } from '../last-updated.service';
-import { CityService } from '../city.service';
-import { WeatherService } from '../weather.service';
+import { LastUpdatedService } from '../services/last-updated.service';
+import { CityService } from '../services/city.service';
+import { WeatherService } from '../services/weather.service';
+import { OpenWeatherDialogService } from '../services/open-weather-dialog.service';
 
 @Component({
   selector: 'app-weather-item',
@@ -16,7 +17,7 @@ import { WeatherService } from '../weather.service';
   styleUrl: './weather-item.component.scss'
 })
 export class WeatherItemComponent {
-  constructor(private lastUpdatedService: LastUpdatedService, private cityService: CityService, private weatherService: WeatherService) { }
+  constructor(private lastUpdatedService: LastUpdatedService, private cityService: CityService, private weatherService: WeatherService, private weatherDialogService: OpenWeatherDialogService) { }
   @Input()
   weather!: Weather;
   isUpdating: boolean = false;
@@ -45,7 +46,10 @@ export class WeatherItemComponent {
   }
 
   handleDelete() {
-
     this.cityService.removeCity(this.weather.Location.S)
+  }
+
+  openWeatherInfo() {
+    this.weatherDialogService.openWeatherDialog(this.weather);
   }
 }

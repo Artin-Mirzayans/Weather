@@ -1,11 +1,11 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatIconModule } from '@angular/material/icon';
-import { WeatherService } from '../weather.service';
-import { CityService } from '../city.service';
-import { WeatherServiceMock } from '../weather.service-mock';
+import { WeatherService } from '../services/weather.service';
+import { CityService } from '../services/city.service';
+import { WeatherServiceMock } from '../services/weather.service-mock';
 import { WeatherItemComponent } from '../weather-item/weather-item.component';
-import { WeatherDialogService } from '../weather-dialog.service';
+import { AddWeatherDialogService } from '../services/add-weather-dialog.service';
 import { MatDialogModule } from '@angular/material/dialog';
 import { Weather } from '../models/weather.model';
 
@@ -21,7 +21,7 @@ import { Weather } from '../models/weather.model';
 export class WeatherGridComponent {
   city!: Weather;
 
-  constructor(public cityService: CityService, private weatherService: WeatherService, private weatherServiceMock: WeatherServiceMock, private dialogService: WeatherDialogService) { }
+  constructor(public cityService: CityService, private weatherService: WeatherService, private weatherServiceMock: WeatherServiceMock, private dialogService: AddWeatherDialogService) { }
 
   // ngOnInit(): void {
   //   this.weatherService.getAllWeather().subscribe({

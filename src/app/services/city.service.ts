@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Weather } from './models/weather.model';
+import { Weather } from '../models/weather.model';
 
 @Injectable({
   providedIn: 'root',

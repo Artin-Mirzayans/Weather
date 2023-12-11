@@ -8,9 +8,9 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
-import { WeatherService } from '../weather.service';
-import { CityService } from '../city.service';
-import { WeatherDialogService } from '../weather-dialog.service';
+import { WeatherService } from '../services/weather.service';
+import { CityService } from '../services/city.service';
+import { AddWeatherDialogService } from '../services/add-weather-dialog.service';
 
 @Component({
   selector: 'app-add-weather-dialog',
@@ -33,7 +33,7 @@ export class AddWeatherDialogComponent {
   isLoading: boolean = false;
   form = new FormControl('')
 
-  constructor(private cityService: CityService, private weatherService: WeatherService, private weatherDialogService: WeatherDialogService) {
+  constructor(private cityService: CityService, private weatherService: WeatherService, private weatherDialogService: AddWeatherDialogService) {
     this.filteredCities = this.cityOptions.slice();
   }
 

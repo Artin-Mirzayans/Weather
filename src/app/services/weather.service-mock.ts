@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
-import { MockData } from '../assets/mock-data';
+import { MockData } from '../../assets/mock-data';
 
 @Injectable({
     providedIn: 'root'

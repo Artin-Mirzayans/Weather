@@ -1,0 +1,20 @@
+::ng-deep .OpenWeatherModal {
+    .weather-details {
+        display: flex;
+        height: 100%;
+        width: 100%;
+    }
+
+    .left {
+        display: flex;
+        flex-direction: column;
+        width: 30%;
+        height: 100%;
+        background-color: rgb(74, 149, 255);
+    }
+    .right {
+        width: 70%;
+        height: 100%;
+        background-color: rgb(194, 221, 238);
+    }
+}

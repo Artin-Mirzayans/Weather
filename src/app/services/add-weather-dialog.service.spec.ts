@@ -1,6 +1,6 @@
 import { TestBed } from '@angular/core/testing';
 
-import { WeatherDialogService } from './weather-dialog.service';
+import { WeatherDialogService } from './add-weather-dialog.service';
 
 describe('WeatherDialogService', () => {
   let service: WeatherDialogService;
