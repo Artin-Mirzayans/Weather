@@ -1,7 +1,17 @@
-<div class="weather-details">
+<div class="open-weather">
     <div class="left">
-        <div>{{data.weatherItem.Temperature.N}}</div>
+        <div class="city-info"><div>{{cityName}}</div></div>
+        <div>{{cityTime}}</div>
+        <div class="temp">{{data.weatherItem.Temperature.N}}°</div>
        <div>{{data.weatherItem.Description.S}}</div>
     </div>
-    <div class="right"></div>
+    <div class="right">
+        <div class="forecast"><app-weather-forecast [weatherData]="data.weatherItem"></app-weather-forecast></div>
+        <div class="weather-details">
+            <div class="feels-like detail"><div class="title">Feels Like</div><div class="value">{{data.weatherItem.FeelsLike.N}}°</div></div>
+            <div class="humidity detail"><div class="title">Humidity</div><div class="value">{{data.weatherItem.Humidity.N}}%</div></div>
+            <div class="rain detail"><div class="title">Chance of Rain</div><div class="value">{{toPercent(data.weatherItem.Rain.N)}}%</div></div>
+            <div class="wind-speed detail"><div class="title">Wind Speed</div><div class="value">{{data.weatherItem.Speed.N}} mp/h</div></div>
+        </div>
+    </div>
 </div>

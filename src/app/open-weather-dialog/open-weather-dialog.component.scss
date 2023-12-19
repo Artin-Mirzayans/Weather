@@ -1,5 +1,5 @@
 ::ng-deep .OpenWeatherModal {
-    .weather-details {
+    .open-weather {
         display: flex;
         height: 100%;
         width: 100%;
@@ -8,13 +8,61 @@
     .left {
         display: flex;
         flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 4rem;
         width: 30%;
         height: 100%;
+        font-size: 2rem;
         background-color: rgb(74, 149, 255);
+        color: whitesmoke;
+
+        .temp {
+            font-size: 3rem;
+        }
     }
+
     .right {
         width: 70%;
         height: 100%;
         background-color: rgb(194, 221, 238);
+
+        .forecast {
+            display:block;
+            text-align: center;
+            margin:0 auto
+        }
+
+        .weather-details {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 2.5rem;
+            margin-top: 50px;
+        }
+
+        .detail {
+            display: flex;
+            flex-direction: column;
+            gap: 1.8rem;
+            width: 250px;
+            height: 125px;
+            background-color: whitesmoke;
+            border: 1px solid whitesmoke;
+            border-radius: 2rem;
+        }
+
+        .title {
+            margin-left: 1.2rem;
+            margin-top: .8rem;
+            letter-spacing: .05rem;
+            font-weight: 550;
+        }
+
+        .value {
+            align-self: center;
+            font-size: 2.5rem;
+            font-weight: 550;
+        }
     }
 }

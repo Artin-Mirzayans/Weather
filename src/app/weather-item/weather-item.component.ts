@@ -50,6 +50,7 @@ export class WeatherItemComponent {
   }
 
   openWeatherInfo() {
-    this.weatherDialogService.openWeatherDialog(this.weather);
+    if (!this.isUpdating)
+      this.weatherDialogService.openWeatherDialog(this.weather);
   }
 }

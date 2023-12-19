@@ -14,8 +14,6 @@ export class CityService {
 
   addCity(newCity: Weather): void {
     this.cities.unshift(newCity);
-    console.log(newCity);
-    console.log(this.cities);
   }
 
   updateCity(location: string, updatedCity: Weather): void {
