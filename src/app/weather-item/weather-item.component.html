@@ -1,15 +1,14 @@
 <div class="weather-card" (click)="openWeatherInfo()">
+  <div class="weather-info">
   @if (isUpdating) {
     <mat-spinner></mat-spinner>
   }
 
   @else {
-    <div class="weather-info">
     <div class="location">{{ weather.Location.S.split(',')[0] }}</div>
     <div class="description">{{ weather.Description.S }}</div>
     <div class="temperature">{{ weather.Temperature.N }}°</div>
     <div class="high-low">{{weather.TempMin.N}}° | {{weather.TempMax.N}}°</div>
-  </div>
     @if (getFormattedTime(weather.Timestamp.S) !== 'Just Updated') {
 
     <div class="last-updated">{{ getFormattedTime(weather.Timestamp.S) }}</div>
@@ -25,4 +24,5 @@
     </button>
     </div>
   }
+  </div>
   </div>

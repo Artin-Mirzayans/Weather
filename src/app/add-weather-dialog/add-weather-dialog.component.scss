@@ -1,11 +1,27 @@
 #weather-dialog {
-    display: flex;;
+    height: 100%;
+    display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    gap: 3rem;
+
+    input {
+        font-size: 1.2rem;
+    }
+}
+
+#Add_Title {
+    font-size: 3rem;
+    letter-spacing: .04;
 }
 
 #clear_weather_input {
     width: 50px;
     height:30px;
+}
+
+#submit_weather {
+    font-size: 1.2rem;
+    margin-top: -1.5rem;
 }

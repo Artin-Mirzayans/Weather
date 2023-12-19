@@ -23,4 +23,10 @@ export class WeatherService {
     return this.http.post(url, null);
   }
 
+  deleteWeather(city: string, country: string): Observable<any> {
+    const url = `${this.apiUrl}/weather/delete?city=${city}&country=${country}`;
+
+    return this.http.post(url, null);
+  }
+
 }

@@ -46,7 +46,21 @@ export class WeatherItemComponent {
   }
 
   handleDelete() {
-    this.cityService.removeCity(this.weather.Location.S)
+    this.isUpdating = true;
+    const location = this.weather.Location.S
+    const locationParts = location.split(',');
+    const city = locationParts[0];
+    const country = locationParts[1];
+    this.weatherService.deleteWeather(city!, country).subscribe({
+      next: () => {
+        this.cityService.removeCity(this.weather.Location.S)
+        this.isUpdating = false;
+      },
+      error: (error) => {
+        console.error('Error deleting data:', error);
+        this.isUpdating = false;
+      },
+    });
   }
 
   openWeatherInfo() {

@@ -1,5 +1,5 @@
-Add New City
 <div id="weather-dialog">
+  <div id="Add_Title">Select City</div>
 @if (isLoading) {
   <mat-spinner></mat-spinner>
 }
@@ -26,6 +26,6 @@ Add New City
         @if (form.hasError('duplicateCity')){<mat-error>City has already been selected.</mat-error>}   
         @if (form.hasError('fetchError')){<mat-error>Error fetching weather.</mat-error>}
     </mat-form-field>
-    <button mat-raised-button color="primary" (click)="submitForm()">Submit</button>
+    <button id="submit_weather" mat-raised-button color="primary" (click)="submitForm()">Submit</button>
 }
 </div>

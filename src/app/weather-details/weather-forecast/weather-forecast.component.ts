@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { Chart, ChartConfiguration, ChartEvent, ChartType } from 'chart.js';
+import { Chart, ChartConfiguration, ChartEvent, ChartOptions, ChartType } from 'chart.js';
 import { NgChartsModule } from 'ng2-charts';
 import { Weather } from '../../models/weather.model';
 
@@ -20,7 +20,7 @@ export class WeatherForecastComponent {
     datasets: [
       {
         data: [],
-        label: 'Series A',
+        label: 'Temp',
         backgroundColor: '#319DFF',
         borderColor: '#FFFFFF',
         pointBackgroundColor: '#FFFFFF',
@@ -32,9 +32,9 @@ export class WeatherForecastComponent {
     ],
     labels: [],
   };
+  lineChartOptions: ChartConfiguration['options']
   lineChartLegend = false;
   lineChartType = 'line';
-
 
   ngOnInit() {
     this.createChart();
@@ -50,6 +50,18 @@ export class WeatherForecastComponent {
         Number(this.weatherData.Day4Temp.N),
         Number(this.weatherData.Day5Temp.N),
       ];
+
+      const min = Math.ceil(Math.min(...data) - 5);
+      const max = Math.floor(Math.max(...data) + 5);
+
+      this.lineChartOptions = {
+        scales: {
+          y: {
+            min: min,
+            max: max,
+          },
+        },
+      };
 
       this.lineChartData.labels = labels;
       this.lineChartData.datasets[0].data = data;
