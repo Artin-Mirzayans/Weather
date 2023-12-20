@@ -84,6 +84,11 @@ export class AddWeatherDialogComponent {
       this.form.setErrors({ 'duplicateCity': true })
       return false;
     }
+
+    if (this.cityService.cities.length > 11) {
+      this.form.setErrors({ 'maxCities': true })
+      return false;
+    }
     return true;
   }
 }

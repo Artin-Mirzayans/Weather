@@ -25,6 +25,7 @@
         @if (form.hasError('invalidCity')){<mat-error>Invalid city selected.</mat-error>}
         @if (form.hasError('duplicateCity')){<mat-error>City has already been selected.</mat-error>}   
         @if (form.hasError('fetchError')){<mat-error>Error fetching weather.</mat-error>}
+        @if (form.hasError('maxCities')){<mat-error>Max cities reached.</mat-error>}
     </mat-form-field>
     <button id="submit_weather" mat-raised-button color="primary" (click)="submitForm()">Submit</button>
 }

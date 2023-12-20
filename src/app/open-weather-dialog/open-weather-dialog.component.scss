@@ -3,7 +3,6 @@
     .open-weather {
         display: flex;
         height: 100%;
-        width: 100%;
     }
 
     .left {
@@ -12,20 +11,32 @@
         justify-content: center;
         align-items: center;
         gap: 4rem;
-        width: 30%;
         height: 100%;
+        width: 30%;
         font-size: 2rem;
         background-color: rgb(74, 149, 255);
         color: whitesmoke;
 
+        .city-info {
+            font-size: 2rem;
+        }
+
+        .city-time {
+            font-size: 2.4rem;
+        }
+
         .temp {
-            font-size: 3rem;
+            font-size: 2.3rem;
+        }
+
+        .city-description {
+            font-size: 2rem;
         }
     }
 
     .right {
-        width: 70%;
         height: 100%;
+        width: 70%;
         background-color: rgb(194, 221, 238);
 
         .weather-details {

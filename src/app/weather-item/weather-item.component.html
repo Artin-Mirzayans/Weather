@@ -1,4 +1,4 @@
-<div class="weather-card" (click)="openWeatherInfo()">
+<div class="weather-card" (click)="openWeatherInfo()" [ngClass]="{'full-width': isFullWidth}">
   <div class="weather-info">
   @if (isUpdating) {
     <mat-spinner></mat-spinner>

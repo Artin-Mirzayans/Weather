@@ -1,14 +1,23 @@
 .weather-card {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     position: relative;
-    width: 300px;
-    font-size: 2.2rem;
+    height: 240px;
+    width: 250px;
+    font-size: 2rem;
     padding: 4.5rem;
-    margin: 2rem;
+    margin: 1.4rem;
     color: whitesmoke;
+    white-space: nowrap;
     background-color: rgb(120, 165, 255);
     border-radius: 1rem;
     border: 2px solid black;
     transition: 0.15s;
+}
+
+.full-width {
+  width: 200px;
 }
 
 .weather-card:hover {
@@ -24,22 +33,22 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 1.5rem;
+  gap: 1.1rem;
 }
 
 .weather-info {
   .location {
     font-weight: 580;
-    font-size: 2.5rem;
+    font-size: 2.8rem;
   }
   .description {
-    font-size: 2.1rem;
+    font-size: 2.5rem;
   }
   .temperature {
-    font-size: 2rem;
+    font-size: 2.4rem;
   }
   .high-low {
-    font-size: 1.8rem;
+    font-size: 2.2rem;
   }
 }
 
@@ -52,13 +61,13 @@
 
 .weather-button {
     position: absolute;
-    top: 10px; /* Adjust the top distance as needed */
+    top: 10px;
   }
   
   .button_update {
-    right: 70px; /* Adjust the right distance as needed */
+    right: 70px;
   }
   
   .button_delete {
-    right: 10px; /* Adjust the right distance as needed */
+    right: 10px;
   }

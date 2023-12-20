@@ -1,9 +1,23 @@
 /* You can add global styles to this file, and also import other style files */
 
-body {
-    height: 100vh;
-    width: 100%;
-    background: linear-gradient(to bottom, #cfdfff, #75b5e3);
+html, body {
+    min-height: 100%;
 }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+body {
+    background: linear-gradient(to bottom, #cfdfff, #75b5e3);
+    margin: 0; 
+    font-family: Roboto, "Helvetica Neue", sans-serif; 
+}
+
+body {
+    font-size: 16px;
+  }
+  
+  /* Media query for screens with a width of 1000px or less */
+  @media (max-width: 1000px) {
+    body {
+      font-size: 12px;
+    }
+  }
 

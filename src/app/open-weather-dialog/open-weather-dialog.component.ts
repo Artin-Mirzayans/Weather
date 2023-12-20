@@ -1,7 +1,8 @@
-import { Component, Inject } from '@angular/core';
+import { Component, Inject, HostListener } from '@angular/core';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { CommonModule } from '@angular/common';
 import { WeatherForecastComponent } from '../weather-details/weather-forecast/weather-forecast.component';
+import { OpenWeatherDialogService } from '../services/open-weather-dialog.service';
 import { Weather } from '../models/weather.model';
 import { citiestz } from '../../assets/cities-tz';
 import moment from 'moment-timezone';
@@ -16,7 +17,9 @@ import moment from 'moment-timezone';
 export class OpenWeatherDialogComponent {
   cityName: string;
   cityTime: string | undefined;
-  constructor(@Inject(MAT_DIALOG_DATA) public data: { weatherItem: Weather }) {
+  isModalWidth = false;
+  modalWidthThreshold = 1000;
+  constructor(@Inject(MAT_DIALOG_DATA) public data: { weatherItem: Weather }, private weatherDialogService: OpenWeatherDialogService) {
     this.cityName = this.data.weatherItem.Location.S.split(',')[0];
     const timeZone = this.getTimeZone(this.cityName);
     this.cityTime = this.getCurrentTime(timeZone);
@@ -35,10 +38,6 @@ export class OpenWeatherDialogComponent {
     return city ? city.timeZone : undefined;
   }
 
-  ngOnInit() {
-    console.log(this.data.weatherItem)
-  }
-
   toPercent(decimalValue: string): string {
     const numericValue = parseFloat(decimalValue);
     if (isNaN(numericValue)) {
@@ -47,5 +46,18 @@ export class OpenWeatherDialogComponent {
 
     const percentageValue = (numericValue * 100);
     return `${percentageValue}`;
+  }
+
+  @HostListener('window:resize', ['$event'])
+  onResize(event: any): void {
+    if (!this.checkWidth())
+      this.weatherDialogService.closeWeatherDialog();
+
+  }
+
+
+  checkWidth(): boolean {
+    const windowWidth = window.innerWidth;
+    return windowWidth > this.modalWidthThreshold;
   }
 }

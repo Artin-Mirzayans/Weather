@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, HostListener } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatButtonModule } from '@angular/material/button';
@@ -21,6 +21,10 @@ export class WeatherItemComponent {
   @Input()
   weather!: Weather;
   isUpdating: boolean = false;
+  isFullWidth = false;
+  fullWidthThreshold = 600; // Adjust this threshold as needed
+  isModalWidth = false;
+  modalWidthThreshold = 1000;
 
   getFormattedTime(dateString: string): string {
     return this.lastUpdatedService.formatRelativeTime(dateString);
@@ -64,7 +68,22 @@ export class WeatherItemComponent {
   }
 
   openWeatherInfo() {
-    if (!this.isUpdating)
+    if (!this.isUpdating && this.isModalWidth)
       this.weatherDialogService.openWeatherDialog(this.weather);
+  }
+
+  @HostListener('window:resize', ['$event'])
+  onResize(event: any): void {
+    this.checkWidth();
+  }
+
+  ngOnInit(): void {
+    this.checkWidth();
+  }
+
+  checkWidth(): void {
+    const windowWidth = window.innerWidth;
+    this.isFullWidth = windowWidth < this.fullWidthThreshold;
+    this.isModalWidth = windowWidth > this.modalWidthThreshold;
   }
 }

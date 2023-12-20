@@ -1,9 +1,10 @@
 <div class="open-weather">
     <div class="left">
         <div class="city-info"><div>{{cityName}}</div></div>
-        <div>{{cityTime}}</div>
+        <div class="city-time">{{cityTime}}</div>
         <div class="temp">{{data.weatherItem.Temperature.N}}°</div>
-       <div>{{data.weatherItem.Description.S}}</div>
+        <div class="temp">{{data.weatherItem.TempMin.N}}° | {{data.weatherItem.TempMax.N}}°</div>
+       <div class="city-description">{{data.weatherItem.Description.S}}</div>
     </div>
     <div class="right">
         <div class="forecast"><app-weather-forecast [weatherData]="data.weatherItem"></app-weather-forecast></div>
