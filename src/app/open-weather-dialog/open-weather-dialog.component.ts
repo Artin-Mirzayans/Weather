@@ -18,6 +18,7 @@ export class OpenWeatherDialogComponent {
   cityName: string;
   cityTime: string | undefined;
   isModalWidth = false;
+  modalHeightThreshold = 630;
   modalWidthThreshold = 1000;
   constructor(@Inject(MAT_DIALOG_DATA) public data: { weatherItem: Weather }, private weatherDialogService: OpenWeatherDialogService) {
     this.cityName = this.data.weatherItem.Location.S.split(',')[0];
@@ -58,6 +59,7 @@ export class OpenWeatherDialogComponent {
 
   checkWidth(): boolean {
     const windowWidth = window.innerWidth;
-    return windowWidth > this.modalWidthThreshold;
+    const windowHeight = window.innerHeight;
+    return windowWidth > this.modalWidthThreshold && windowHeight > this.modalHeightThreshold
   }
 }

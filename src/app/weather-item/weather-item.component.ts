@@ -38,7 +38,6 @@ export class WeatherItemComponent {
     const country = locationParts[1];
     this.weatherService.getWeather(city!, country).subscribe({
       next: (data) => {
-        console.log('Received data:', data);
         this.cityService.updateCity(location, data);
         this.isUpdating = false;
       },
