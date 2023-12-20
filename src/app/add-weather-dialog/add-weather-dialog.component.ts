@@ -56,7 +56,6 @@ export class AddWeatherDialogComponent {
       const country = "US";
       this.weatherService.getWeather(city!, country).subscribe({
         next: (data) => {
-          console.log('Received data:', data);
           this.cityService.addCity(data);
           this.weatherDialogService.closeWeatherDialog();
           this.isLoading = false;
@@ -72,7 +71,6 @@ export class AddWeatherDialogComponent {
 
   validateInput(selectedCity: string): boolean {
     if (selectedCity === null || selectedCity === '') {
-      console.log(selectedCity)
       this.form.setErrors({ 'emptyInput': true })
       return false;
     }

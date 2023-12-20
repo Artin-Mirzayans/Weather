@@ -20,22 +20,22 @@ export class WeatherGridComponent {
 
   constructor(public cityService: CityService, private weatherService: WeatherService, private weatherServiceMock: WeatherServiceMock) { }
 
-  // ngOnInit(): void {
-  //   this.weatherService.getAllWeather().subscribe({
-  //     next: (data) => {
-  //       console.log('Received data:', data);
-  //       this.allWeatherData = data; // Assuming you want to assign the data to a property
-  //     },
-  //     error: (error) => {
-  //       console.error('Error fetching data:', error);
-  //     },
-  //   });
-  // }
-
   ngOnInit(): void {
-    this.weatherServiceMock.getAllWeather().subscribe((data) => {
-      console.log(data);
-      this.cityService.insertCities(data);
-    })
+    this.weatherService.getAllWeather().subscribe({
+      next: (data) => {
+        this.cityService.insertCities(data); // Assuming you want to assign the data to a property
+      },
+      error: (error) => {
+        console.error('Error fetching data:', error);
+      },
+    });
   }
 }
+
+//   ngOnInit(): void {
+//     this.weatherServiceMock.getAllWeather().subscribe((data) => {
+//       console.log(data);
+//       this.cityService.insertCities(data);
+//     })
+//   }
+
