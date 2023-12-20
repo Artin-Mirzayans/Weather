@@ -12,7 +12,7 @@ export class AddWeatherDialogService {
 
   openWeatherDialog(): void {
     this.dialogRef = this.dialog.open(AddWeatherDialogComponent, {
-      height: '400px',
+      height: '600px',
       width: '600px',
     });
   }
