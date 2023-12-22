@@ -19,12 +19,28 @@ jobs:
       - uses: hashicorp/setup-terraform@v3
         with:
           terraform_version: "1.6.3"
-
-      - run: terraform init
+      - name: Terraform Init
+        run: terraform init
         working-directory: terraform
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+
+      - name: Terraform Validate
+        run: terraform validate -no-color
+        working-directory: terraform
+
+      - name: Terraform Plan
+        run: terraform plan -no-color
+        working-directory: terraform
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+
+      - run: echo ${{ steps.plan.outputs.stdout }}
+      - run: echo ${{ steps.plan.outputs.stderr }}
+      - run: echo ${{ steps.plan.outputs.exitcode }}
 
       - run: echo "🍏 This job's status is ${{ job.status }}."
