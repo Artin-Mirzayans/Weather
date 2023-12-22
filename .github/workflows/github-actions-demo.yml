@@ -33,9 +33,7 @@ jobs:
           TF_VAR_openweather_api_key: ${{ secrets.OPENWEATHER_API_KEY }}
 
       - name: Terraform Apply
-        run: |
-          export TF_LOG=trace
-          terraform apply -auto-approve
+        run: terraform apply -auto-approve
         working-directory: terraform
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
