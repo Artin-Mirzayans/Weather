@@ -1,0 +1,6 @@
+{
+    "queryStringParameters": {
+      "city": "New York",
+      "country": "US"
+    }
+  }
