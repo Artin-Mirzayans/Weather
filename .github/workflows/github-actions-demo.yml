@@ -40,7 +40,7 @@ jobs:
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
 
       - name: Terraform Apply
-        run: terraform apply -var "openweather_api_key=${{ secrets.OPENWEATHER_API_KEY }}" -no-color
+        run: terraform apply -var "openweather_api_key=${{ secrets.OPENWEATHER_API_KEY }}" -no-color -debug
         working-directory: terraform
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
