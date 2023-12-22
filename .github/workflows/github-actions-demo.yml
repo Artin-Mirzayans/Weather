@@ -32,7 +32,7 @@ jobs:
         working-directory: terraform
 
       - name: Terraform Plan
-        run: terraform plan -no-color
+        run: terraform plan -var "openweather_api_key=${{ secrets.OPENWEATHER_API_KEY }}" -no-color
         working-directory: terraform
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
