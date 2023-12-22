@@ -1,20 +1,12 @@
-name: GitHub Actions Demo
-run-name: ${{ github.actor }} is testing out GitHub Actions 🚀
+name: Deploy
+run-name: ${{ github.actor }} is deploying 🚀
 on: [push]
 jobs:
-  Explore-GitHub-Actions:
+  Deploy-Infra:
     runs-on: ubuntu-latest
     steps:
       - name: Check out repository code
         uses: actions/checkout@v4
-
-      - run: echo "💡 The ${{ github.repository }} repository has been cloned to the runner."
-
-      - run: echo "🖥️ The workflow is now ready to test your code on the runner."
-
-      - name: List files in the repository
-        run: |
-          ls ${{ github.workspace }}
 
       - uses: hashicorp/setup-terraform@v3
         with:
@@ -41,7 +33,8 @@ jobs:
           TF_VAR_openweather_api_key: ${{ secrets.OPENWEATHER_API_KEY }}
 
       - name: Terraform Apply
-        run: export TF_LOG=trace
+        run: |
+          export TF_LOG=trace
           terraform apply
         working-directory: terraform
         env:

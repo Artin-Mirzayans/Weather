@@ -201,8 +201,6 @@ resource "aws_lambda_function" "fetch_weather_data" {
   role = aws_iam_role.lambda_fetch_role.arn
 }
 
-variable "openweather_api_key" {}
-
 resource "aws_lambda_function" "get_weather_data" {
   function_name = "GetWeatherData"
   handler       = "index.handler"
