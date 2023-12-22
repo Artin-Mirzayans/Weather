@@ -41,7 +41,7 @@ jobs:
 
       - name: Terraform Apply
         run: export TF_LOG=trace
-          terraform apply -var "openweather_api_key=${{ secrets.OPENWEATHER_API_KEY }}" -no-color
+          terraform apply -var "openweather_api_key=${{ secrets.OPENWEATHER_API_KEY }}"
         working-directory: terraform
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
