@@ -21,6 +21,6 @@ jobs:
           terraform_version: "1.6.3"
 
       - run: terraform init
-        working-directory: /terraform
+        working-directory: terraform
 
       - run: echo "🍏 This job's status is ${{ job.status }}."
