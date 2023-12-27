@@ -2,11 +2,10 @@ name: Deploy
 run-name: ${{ github.actor }} is deploying 🚀
 on: [push]
 jobs:
-  build-and-zip-lambdas:
+  Deploy-Infra:
     runs-on: ubuntu-latest
-
     steps:
-      - name: Checkout repository
+      - name: Check out repository code
         uses: actions/checkout@v4
 
       - name: Set up Node.js
@@ -26,11 +25,6 @@ jobs:
             echo "i zipped"
             popd
           done
-  Deploy-Infra:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Check out repository code
-        uses: actions/checkout@v4
 
       - uses: hashicorp/setup-terraform@v3
         with:
