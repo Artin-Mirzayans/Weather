@@ -18,10 +18,13 @@ jobs:
         run: |
           find terraform/lambda_functions -mindepth 1 -maxdepth 1 -type d | while read dir; do
             echo "Processing directory: $dir"
-            cd "$dir"
+            pushd "$dir" || continue
+            echo "npm install commencing"
             npm install
+            echo "the npm has been installed, prepare to zip"
             zip -r "../$(basename "$dir").zip" .
-            cd ..
+            echo "i zipped"
+            popd
           done
   Deploy-Infra:
     runs-on: ubuntu-latest
