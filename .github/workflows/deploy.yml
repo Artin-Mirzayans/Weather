@@ -2,6 +2,30 @@ name: Deploy
 run-name: ${{ github.actor }} is deploying 🚀
 on: [push]
 jobs:
+  build-and-zip-lambdas:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: "18"
+
+      - name: Install and Zip Subdirectories
+        run: |
+          parent_dir="terraform/lambda_functions"
+          for dir in $parent_dir/*; do
+            if [ -d "$dir" ]; then
+              echo "Processing directory: $dir"
+              cd $dir
+              npm install
+              zip -r ../$(basename $dir).zip .
+              cd ..
+            fi
+          done
   Deploy-Infra:
     runs-on: ubuntu-latest
     steps:
