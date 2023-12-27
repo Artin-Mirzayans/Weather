@@ -182,7 +182,7 @@ resource "aws_lambda_function" "weather_router" {
   runtime          = "nodejs18.x"
   timeout          = 6
   filename         = "${path.module}/lambda_functions/WeatherRouter.zip"
-  source_code_hash = filebase64sha256(file("${path.module}/lambda_functions/WeatherRouter.zip"))
+  source_code_hash = filebase64sha256("${path.module}/lambda_functions/WeatherRouter.zip")
 
   role = aws_iam_role.lambda_weather_router_role.arn
 }
@@ -192,7 +192,7 @@ resource "aws_lambda_function" "fetch_weather_data" {
   handler          = "index.handler"
   runtime          = "nodejs18.x"
   filename         = "${path.module}/lambda_functions/FetchWeatherData.zip"
-  source_code_hash = filebase64sha256(file("${path.module}/lambda_functions/FetchWeatherData.zip"))
+  source_code_hash = filebase64sha256("${path.module}/lambda_functions/FetchWeatherData.zip")
 
   environment {
     variables = {
@@ -208,7 +208,7 @@ resource "aws_lambda_function" "get_weather_data" {
   handler          = "index.handler"
   runtime          = "nodejs18.x"
   filename         = "${path.module}/lambda_functions/GetWeatherData.zip"
-  source_code_hash = filebase64sha256(file("${path.module}/lambda_functions/GetWeatherData.zip"))
+  source_code_hash = filebase64sha256("${path.module}/lambda_functions/GetWeatherData.zip")
 
   role = aws_iam_role.lambda_get_role.arn
 }
@@ -218,7 +218,7 @@ resource "aws_lambda_function" "insert_weather_data" {
   handler          = "index.handler"
   runtime          = "nodejs18.x"
   filename         = "${path.module}/lambda_functions/InsertWeatherData.zip"
-  source_code_hash = filebase64sha256(file("${path.module}/lambda_functions/InsertWeatherData.zip"))
+  source_code_hash = filebase64sha256("${path.module}/lambda_functions/InsertWeatherData.zip")
 
   role = aws_iam_role.lambda_insert_role.arn
 }
@@ -228,7 +228,7 @@ resource "aws_lambda_function" "update_weather_data" {
   handler          = "index.handler"
   runtime          = "nodejs18.x"
   filename         = "${path.module}/lambda_functions/UpdateWeatherData.zip"
-  source_code_hash = filebase64sha256(file("${path.module}/lambda_functions/UpdateWeatherData.zip"))
+  source_code_hash = filebase64sha256("${path.module}/lambda_functions/UpdateWeatherData.zip")
 
   role = aws_iam_role.lambda_insert_role.arn
 }
@@ -238,7 +238,7 @@ resource "aws_lambda_function" "get_all_weather_data" {
   handler          = "index.handler"
   runtime          = "nodejs18.x"
   filename         = "${path.module}/lambda_functions/GetAllWeatherData.zip"
-  source_code_hash = filebase64sha256(file("${path.module}/lambda_functions/GetAllWeatherData.zip"))
+  source_code_hash = filebase64sha256("${path.module}/lambda_functions/GetAllWeatherData.zip")
 
   role = aws_iam_role.lambda_query_role.arn
 }
@@ -248,7 +248,7 @@ resource "aws_lambda_function" "delete_weather_data" {
   handler          = "index.handler"
   runtime          = "nodejs18.x"
   filename         = "${path.module}/lambda_functions/DeleteWeatherData.zip"
-  source_code_hash = filebase64sha256(file("${path.module}/lambda_functions/DeleteWeatherData.zip"))
+  source_code_hash = filebase64sha256("${path.module}/lambda_functions/DeleteWeatherData.zip")
 
   role = aws_iam_role.lambda_delete_role.arn
 }
