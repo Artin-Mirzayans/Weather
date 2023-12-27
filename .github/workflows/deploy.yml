@@ -16,15 +16,12 @@ jobs:
 
       - name: Install and Zip Subdirectories
         run: |
-          parent_dir="terraform/lambda_functions"
-          for dir in $parent_dir/*; do
-            if [ -d "$dir" ]; then
-              echo "Processing directory: $dir"
-              cd $dir
-              npm install
-              zip -r ../$(basename $dir).zip .
-              cd ..
-            fi
+          find terraform/lambda_functions -mindepth 1 -maxdepth 1 -type d | while read dir; do
+            echo "Processing directory: $dir"
+            cd "$dir"
+            npm install
+            zip -r "../$(basename "$dir").zip" .
+            cd ..
           done
   Deploy-Infra:
     runs-on: ubuntu-latest
