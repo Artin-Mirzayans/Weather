@@ -1,27 +1,85 @@
 # Weather
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.0.2.
+## Demo
+https://artin-mirzayans.github.io/Weather/
 
-## Development server
+## Overview
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+This repository contains a simple Angular web application that retrieves weather data using the OpenWeather API. The backend is built using AWS Serverless technologies, including AWS Lambda, API Gateway, and DynamoDB. The entire infrastructure is provisioned and managed using Terraform, and deployment is automated through GitHub Actions workflows.
 
-## Code scaffolding
+## Components
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+- **Angular Frontend**: The app is built with Angular & Angular Material UI.
 
-## Build
+- **AWS Serverless Backend**: The backend is implemented using AWS Lambda for serverless compute, API Gateway for managing API endpoints, and DynamoDB for storing weather data.
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+- **Terraform Infrastructure as Code (IaC)**: The infrastructure is defined and provisioned using Terraform, enabling reproducibility and version control of your AWS environment.
 
-## Running unit tests
+- **GitHub Actions Workflow**: Automated terraform deployment
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+## Prerequisites
 
-## Running end-to-end tests
+Before getting started, make sure you have the following:
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+- Node.js >= 18, npm
+- Terraform >= 1.6.3
+- AWS account with IAM permissions for creating Lambda functions, API Gateway, and DynamoDB tables.
+- [OpenWeather API Key](https://openweathermap.org/api)
 
-## Further help
+## Setup
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+1. **Clone the Repository**:
+
+    ```bash
+    git clone https://github.com/Artin-Mirzayans/Weather.git
+    ```
+
+2. **Install Angular Dependencies**:
+
+    ```bash
+    cd angular
+    npm install
+    ```
+
+3. **Configure AWS Credentials**:
+
+    Set up your AWS credentials on your development machine, or use a service like AWS Secrets Manager to securely store them.
+
+4. **Terraform Configuration**:
+
+    Navigate to the `terraform` directory and create a `secrets.tfvars` file with your OpenWeather API Key.
+
+5. **Deploy Infrastructure**:
+
+    Run the following commands to deploy the AWS infrastructure:
+
+    ```bash
+    cd terraform
+    terraform init
+    terraform plan -var-file=secrets.tfvars  
+    terraform apply -var-file=secrets.tfvars  
+    ```
+
+6. **GitHub Actions Configuration**:
+
+    Update the GitHub Actions workflow files (`.github/workflows/deploy.yml`) with your AWS and Terraform configurations.
+
+7. **Update Angular App Config**:
+
+    Update the Angular app configuration with the API Gateway endpoint and other necessary settings.
+
+8. **Push Changes to GitHub**:
+
+    Commit and push the changes to your GitHub repository.
+
+## GitHub Actions Workflow
+
+The GitHub Actions workflow is triggered on every push to the main branch. It performs the following steps:
+
+1. **Checkout Code**: Checks out the latest code from the repository.
+
+2. **Configure AWS Credentials**: Configures AWS credentials for Terraform.
+
+3. **Run Terraform Init**: Initializes Terraform State in AWS account.
+4. **Run Terraform Plan**: Plans the Terraform deployment.
+5. **Run Terraform Apply**: Applies the Terraform changes if the plan is successful.
