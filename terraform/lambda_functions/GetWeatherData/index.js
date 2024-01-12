@@ -25,7 +25,6 @@ exports.handler = async (event, context) => {
         }),
       };
     }
-    t;
     const weatherData = Object.fromEntries(
       Object.entries(Item).map(([key, value]) => [key, Object.values(value)[0]])
     );
