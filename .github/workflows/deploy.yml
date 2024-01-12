@@ -8,6 +8,24 @@ jobs:
       - name: Check out repository code
         uses: actions/checkout@v4
 
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "18"
+
+      - name: Install and Zip Subdirectories
+        run: |
+          find terraform/lambda_functions -mindepth 1 -maxdepth 1 -type d | while read dir; do
+            echo "Processing directory: $dir"
+            pushd "$dir" || continue
+            echo "npm install commencing"
+            npm install
+            echo "the npm has been installed, prepare to zip"
+            zip -r "../$(basename "$dir").zip" .
+            echo "i zipped"
+            popd
+          done
+
       - uses: hashicorp/setup-terraform@v3
         with:
           terraform_version: "1.6.3"
